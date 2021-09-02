@@ -46,6 +46,23 @@ print("The number of houses built from 1978 - 2019:")
 print(Houses_Grouped.head(20))
 print()
 
-#Merge
+# Looping through a list until Dublin is found, then printing it
+County_List = Province["County"].to_list()
+for i in County_List :
+    if i == "Dublin" :
+        print (i)
+        break
+else:
+    print("Not found")
+
+# Using iterrows to print out which province each county is in
+for index, row in Province.iterrows():
+    print(row['County'], 'is in', row['Province'])
+    print()
+
+# Merge Houses dataframe with Provinces dataframe
 Houses_Merged = pd.merge(Houses,Province,on="County", how = "left")
 print(Houses_Merged.head(20))
+print()
+
+# Creating a function
