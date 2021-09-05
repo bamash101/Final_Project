@@ -65,15 +65,16 @@ Houses_Merged = pd.merge(Houses,Province,on="County", how = "left")
 print(Houses_Merged.head(20))
 print()
 
-# Creating a function
-def drop_total():
-    County_Only = Houses[Houses.County != "All Counties"]
-    print("'All Counties' rows removed from the Houses dataframe")
-    print(County_Only.head(30))
-    return County_Only
+# A function to count the number of unique entries in a user defined dataframe column
+def unique(Dataframe,Column):
+    print("The number of unique entries in this column is:", Dataframe[Column].nunique())
+    print(['Dataframe'])
+    print()
 
-# Calling the function
-drop_total()
+# Calling the function unique
+unique(Dataframe=Houses, Column='County')
+
+
 
 # Creating a list from a dataframe and converting it to a Numpy Array
 County_Only = Houses[Houses.County != "All Counties"]
