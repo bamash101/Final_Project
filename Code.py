@@ -43,7 +43,7 @@ print()
 # Group the data by totals in each County
 Houses_Grouped = Houses.groupby("County")["VALUE"].sum()
 print("The number of houses built from 1978 - 2019:")
-print(Houses_Grouped.head(20))
+print(Houses_Grouped.head(27))
 print()
 
 # Looping through a list until Dublin is found, then printing it
@@ -66,3 +66,18 @@ print(Houses_Merged.head(20))
 print()
 
 # Creating a function
+def drop_total():
+    County_Only = Houses[Houses.County != "All Counties"]
+    print("'All Counties' rows removed from the Houses dataframe")
+    print(County_Only.head(30))
+    return County_Only
+
+# Calling the function
+drop_total()
+
+# Creating a list from a dataframe and converting it to a Numpy Array
+County_Only = Houses[Houses.County != "All Counties"]
+List = County_Only.values.tolist()
+Array = np.array(List)
+print(List)
+
