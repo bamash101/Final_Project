@@ -1,7 +1,7 @@
 # import required libraries
 import pandas as pd
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import os
 
 # Check the working directory
@@ -68,7 +68,6 @@ print()
 # A function to count the number of unique entries in a user defined dataframe column
 def unique(Dataframe,Column):
     print("The number of unique entries in this column is:", Dataframe[Column].nunique())
-    print(['Dataframe'])
     print()
 
 # Calling the function unique
@@ -82,3 +81,16 @@ List = County_Only.values.tolist()
 Array = np.array(List)
 print(List)
 
+# Matplotlib visualisation
+Plot_Data = Houses.loc[(Houses["County"] == "All Counties")]
+Plot_Data.plot(x="Year", y=["VALUE"], kind="bar",)
+plt.title("No. of houses built per year in Ireland", color = 'grey')
+plt.xlabel('Year', color = 'grey', fontsize='12', horizontalalignment='center')
+plt.ylabel('No. of Houses', color = 'grey', fontsize='12', horizontalalignment='center')
+plt.xticks(color='black', rotation=90, fontsize='8', horizontalalignment='center')
+plt.yticks(color='black', rotation=0, fontsize='8', horizontalalignment='right')
+plt.grid(color='grey', linewidth=.5, linestyle='--', axis='y')
+plt.legend('')
+plt.show()
+
+exit()
