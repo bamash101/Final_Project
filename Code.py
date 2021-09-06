@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import os
 
 # Check the working directory
@@ -83,8 +84,8 @@ print(List)
 
 # Matplotlib visualisation
 Plot_Data = Houses.loc[(Houses["County"] == "All Counties")]
-Plot_Data.plot(x="Year", y=["VALUE"], kind="bar",)
-plt.title("No. of houses built per year in Ireland", color = 'grey')
+Plot_Data.plot(x="Year", y=["VALUE"], kind="bar")
+plt.title("Fig.1 - No. of houses built per year in Ireland", color = 'black')
 plt.xlabel('Year', color = 'grey', fontsize='12', horizontalalignment='center')
 plt.ylabel('No. of Houses', color = 'grey', fontsize='12', horizontalalignment='center')
 plt.xticks(color='black', rotation=90, fontsize='8', horizontalalignment='center')
@@ -93,4 +94,11 @@ plt.grid(color='grey', linewidth=.5, linestyle='--', axis='y')
 plt.legend('')
 plt.show()
 
-exit()
+# Seaborn visualisation
+Counties = ['Dublin','Cork','Galway','Limerick','Waterford']
+Seaborn_Data = Houses[Houses['County'].isin(Counties)]
+sns.lineplot(data = Seaborn_Data , x = 'Year', y = 'VALUE' , hue = 'County').set(title='Fig.2 - Number of houses built annually in counties with cities')
+plt.show()
+
+
+
