@@ -48,10 +48,11 @@ print(Houses_Grouped.head(27))
 print()
 
 # Looping through a list until Dublin is found, then printing it
-County_List = Province["County"].to_list()
+County_List = Houses["County"].to_list()
 for i in County_List :
     if i == "Dublin" :
-        print (i)
+        print ("Your search returned:", i)
+        print()
         break
 else:
     print("Not found")
@@ -74,13 +75,12 @@ def unique(Dataframe,Column):
 # Calling the function unique
 unique(Dataframe=Houses, Column='County')
 
-
-
 # Creating a list from a dataframe and converting it to a Numpy Array
 County_Only = Houses[Houses.County != "All Counties"]
 List = County_Only.values.tolist()
 Array = np.array(List)
-print(List)
+print("Example of a Numpy Array")
+print(Array)
 
 # Matplotlib visualisation
 Plot_Data = Houses.loc[(Houses["County"] == "All Counties")]
